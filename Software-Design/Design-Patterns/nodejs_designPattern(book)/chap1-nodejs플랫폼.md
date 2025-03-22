@@ -40,7 +40,7 @@
   → 블로킹 I/O를 사용하여 구현된 웹서버가 같은 스레드 내에서 여러 연결을 처리하지 못하는 것은 당연
 - 이 동시 연결을 차리하기 위해 개별 스레드 또는 프로세스를 사용하는 것(다중 스레드)
 
-![KakaoTalk_Photo_2024-11-25-23-58-15.jpeg](https://prod-files-secure.s3.us-west-2.amazonaws.com/4cd83ffe-41f4-4681-8d1c-f4da55deddb1/617b0ad9-08ba-42a3-8ebc-849997474158/KakaoTalk_Photo_2024-11-25-23-58-15.jpeg)
+![다중커넥션을 처리하기 위한 다중 스레드](https://prod-files-secure.s3.us-west-2.amazonaws.com/4cd83ffe-41f4-4681-8d1c-f4da55deddb1/617b0ad9-08ba-42a3-8ebc-849997474158/KakaoTalk_Photo_2024-11-25-23-58-15.jpeg)
 
 위의 그림처럼 자주 스레드 블로킹을 통해 컨텍스트 전환일 이러나면 장기간 실행 스레드를 가지게 되며 메모리와 cpu 사이클 낭비
 
@@ -59,7 +59,7 @@
 - 디멀티 플렉싱 : 신호 다시 분할
 - 동기 이벤트 디멀티 플렉서 : 여러 리소스를 관찰하여 읽기/쓰기 연산이 완료되었을 때 새로운 이벤트를 반환하는 방식. 새로운 이벤트가 반환되기 전까지 블로킹. 이러한 방식은 단일 쓰레드에서 여러 리소스의 I/O를 다룰 수 있다.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4cd83ffe-41f4-4681-8d1c-f4da55deddb1/7cb06e54-d63e-460c-b7fa-4081b0fbbedd/image.png)
+![이벤트 디멀티 플렉싱](https://prod-files-secure.s3.us-west-2.amazonaws.com/4cd83ffe-41f4-4681-8d1c-f4da55deddb1/7cb06e54-d63e-460c-b7fa-4081b0fbbedd/image.png)
 
 → 유휴시간을 최소화, 하나의 스레드에 동시 접근한 방식이 간단한 동시성 전략을 가지게 함
 
@@ -67,7 +67,7 @@
 
 - 아이디어 : I/O 작업에 연관된 핸들러(콜백함수)를 가지고, 리소스가 준비되면 이벤트 루프에서 콜백함수를 호출하며 자원을 가져감
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4cd83ffe-41f4-4681-8d1c-f4da55deddb1/83de3294-6fdb-4755-b8ff-74b8d102a0d3/image.png)
+![리액터 패턴](https://prod-files-secure.s3.us-west-2.amazonaws.com/4cd83ffe-41f4-4681-8d1c-f4da55deddb1/83de3294-6fdb-4755-b8ff-74b8d102a0d3/image.png)
 
 ### Libuv, Node.js의 I/O 엔진
 
@@ -82,7 +82,7 @@ Libuv는 기본 시스템 호출을 추상화하는 것 외에도 리액터 패�
   - V8, 크롬 브라우저를 위해 구글이 개발한 JavaScript 엔진으로 Node.js가 매우 빠르고 효율적인 이유 중 하나이기도 하다. V8은 혁신적인 설계와 속도 그리고 효율적인 메모리 관리로 높은 평가를 받고 있다.
   - 고수준 Node.js API를 구현하고 있는 코어 JavaScript 라이브러리
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4cd83ffe-41f4-4681-8d1c-f4da55deddb1/e3fb76e8-1b22-4148-85c9-14d958278557/image.png)
+![Node.js 내부구성요소](https://prod-files-secure.s3.us-west-2.amazonaws.com/4cd83ffe-41f4-4681-8d1c-f4da55deddb1/e3fb76e8-1b22-4148-85c9-14d958278557/image.png)
 
 ## 3. Node.js 에서의 Javascript
 
