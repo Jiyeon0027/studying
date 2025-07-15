@@ -3,7 +3,7 @@ import re
 
 def generate_study_links(root_dir='.', exclude_dirs=None, extensions=None):
     if exclude_dirs is None:
-        exclude_dirs = ['.git', 'node_modules', '__pycache__', '.idea', 'airflow', 'cs']
+        exclude_dirs = ['.git', 'node_modules', '__pycache__', '.idea']
     
     if extensions is None:
         extensions = ['.md']
