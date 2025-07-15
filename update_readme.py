@@ -1,5 +1,6 @@
 import os
 import re
+import json
 
 def generate_study_links(root_dir='.', exclude_dirs=None, extensions=None):
     if exclude_dirs is None:
@@ -8,21 +9,24 @@ def generate_study_links(root_dir='.', exclude_dirs=None, extensions=None):
     if extensions is None:
         extensions = ['.md']
         
-    result = ["# 스터디 자료 목록\n"]
+    result = ["# 공부 자료 목록\n"]
     structure = {}
     
     for dirpath, dirnames, filenames in os.walk(root_dir):
         # 제외 디렉토리 건너뛰기
         dirnames[:] = [d for d in dirnames if d not in exclude_dirs and not d.startswith('.')]
+        # print(f"dirnames: {dirnames}")
         
         # README.md 파일은 제외
         relevant_files = [f for f in filenames if f.endswith(tuple(extensions)) and f != 'README.md']
+        # print(f"relevant_files: {relevant_files}")
         
         if not relevant_files:
             continue
             
         # 디렉토리 경로를 파싱하여 구조 만들기
         path_parts = dirpath.replace('\\', '/').lstrip('./').split('/')
+        # print(f"path_parts: {path_parts}")
         
         # 빈 루트 경로 처리
         if path_parts[0] == '':
@@ -62,25 +66,33 @@ def generate_study_links(root_dir='.', exclude_dirs=None, extensions=None):
     # 구조를 마크다운으로 변환
     def build_markdown(struct, level=2):
         md = []
+        print(f"struct: {json.dumps(struct, indent=4)}")
         
         # 최상위 디렉토리 정렬
         for dir_name in sorted(struct.keys()):
             dir_data = struct[dir_name]
             
             # 디렉토리 제목
-            md.append(f"{'#' * level} {dir_name.replace('-', ' ').title()}")
+            title_str = f"{'#' * level} {dir_name.title()}"
+            if level <= 3:
+                md.append(title_str)
+            else:
+                md.append(f"- {title_str}")
             
-            # 하위 디렉토리가 있으면 재귀적으로 처리
-            subdirs = dir_data['dirs']
-            if subdirs:
-                md.append(build_markdown(subdirs, level + 1))
-                
             # 파일 목록 추가
             files = sorted(dir_data['files'], key=lambda x: x['name'])
             for file in files:
                 file_name = os.path.splitext(file['name'])[0]
                 file_path = file['path'].replace(' ', '%20')
-                md.append(f"- [{file_name}]({file_path})")
+                if level <= 3:
+                    md.append(f"- [{file_name}]({file_path})")
+                else:
+                    md.append(f"  - [{file_name}]({file_path})")
+            
+            # 하위 디렉토리가 있으면 재귀적으로 처리
+            subdirs = dir_data['dirs']
+            if subdirs:
+                md.append(build_markdown(subdirs, level + 1))
                 
             md.append("")  # 공백 라인 추가
             
