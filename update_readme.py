@@ -7,7 +7,7 @@ def generate_study_links(root_dir='.', exclude_dirs=None, extensions=None):
         exclude_dirs = ['.git', 'node_modules', '__pycache__', '.idea']
     
     if extensions is None:
-        extensions = ['.md']
+        extensions = ['.md','.py']
         
     result = ["# 공부 자료 목록\n"]
     structure = {}

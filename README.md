@@ -34,9 +34,6 @@
 
 
 
-## Cs
-- [운영체제](cs/운영체제.md)
-
 ## Data_Engineering
 ### Spark
 - [Spark](data_engineering/Spark/Spark.md)
@@ -54,5 +51,17 @@
 - #### 카프카 완벽가이드
   - [1.카프카 시작하기](data_engineering/kafka/카프카%20완벽가이드/1.카프카%20시작하기.md)
   - [3.카프카 프로듀서: 카프카에 메시지 쓰기](data_engineering/kafka/카프카%20완벽가이드/3.카프카%20프로듀서:%20카프카에%20메시지%20쓰기.md)
+  - [4.카프카 컨슈머: 카프카에서 데이터 읽기](data_engineering/kafka/카프카%20완벽가이드/4.카프카%20컨슈머:%20카프카에서%20데이터%20읽기.md)
+  - [5.프로그램내에서 코드로 카프카 관리하기](data_engineering/kafka/카프카%20완벽가이드/5.프로그램내에서%20코드로%20카프카%20관리하기.md)
+  - [9.데이터 파이프라인 구축하기](data_engineering/kafka/카프카%20완벽가이드/9.데이터%20파이프라인%20구축하기.md)
 
 
+
+## 운영체제
+- [운영체제](운영체제/운영체제.md)
+
+## 자료구조&알고리즘
+- [doublyLinkedList](자료구조&알고리즘/doublyLinkedList.py)
+- [dummyLinkedList](자료구조&알고리즘/dummyLinkedList.py)
+- [linkedList](자료구조&알고리즘/linkedList.py)
+- [linkedListQueue](자료구조&알고리즘/linkedListQueue.py)
