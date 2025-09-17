@@ -1,4 +1,12 @@
+"""
+이진 탐색 트리를 구현한 파일
+"""
+
+
 class Node:
+    """
+    이진 탐색 트리의 노드 클래스
+    """
 
     def __init__(self, key, data):
         self.key = key
@@ -20,12 +28,12 @@ class Node:
         else:  # key == self.key
             raise KeyError("Key already exists")
 
-    def inorderTraversal(self, node):
+    def inorder_traversal(self, node):
         traversal = []
         if node:
-            traversal = self.inorderTraversal(node.left)
+            traversal = self.inorder_traversal(node.left)
             traversal.append(node.key)
-            traversal = self.inorderTraversal(node.right)
+            traversal = self.inorder_traversal(node.right)
         return traversal
 
     def min(self):
@@ -58,13 +66,16 @@ class Node:
 
 
 class BinarySearchTree:
+    """
+    이진 탐색 트리 클래스
+    """
 
     def __init__(self):
         self.root = None
 
-    def inorderTraversal(self):
+    def inorder_traversal(self):
         if self.root:
-            return self.root.inorderTraversal(self.root)
+            return self.root.inorder_traversal(self.root)
         else:
             return []
 
@@ -86,7 +97,7 @@ class BinarySearchTree:
         else:
             return None
 
-    def lookeup(self, key):
+    def lookup(self, key):
         if self.root:
             return self.root.lookup(key)
         else:

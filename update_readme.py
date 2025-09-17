@@ -1,3 +1,7 @@
+"""
+README.md 파일 업데이트 스크립트
+"""
+
 import json
 import os
 
@@ -22,13 +26,17 @@ def generate_study_links(root_dir=".", exclude_dirs=None, extensions=None):
     for dirpath, dirnames, filenames in os.walk(root_dir):
         # 제외 디렉토리 건너뛰기
         dirnames[:] = [
-            d for d in dirnames if d not in exclude_dirs and not d.startswith(".")
+            d
+            for d in dirnames
+            if d not in exclude_dirs and not d.startswith(".")
         ]
         # print(f"dirnames: {dirnames}")
 
         # README.md 파일은 제외
         relevant_files = [
-            f for f in filenames if f.endswith(tuple(extensions)) and f != "README.md"
+            f
+            for f in filenames
+            if f.endswith(tuple(extensions)) and f != "README.md"
         ]
         # print(f"relevant_files: {relevant_files}")
 
@@ -125,7 +133,7 @@ def update_readme():
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(study_links)
 
-    print(f"README.md 파일이 업데이트되었습니다.")
+    print("README.md 파일이 업데이트되었습니다.")
 
 
 if __name__ == "__main__":
