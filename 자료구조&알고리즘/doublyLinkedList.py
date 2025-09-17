@@ -17,7 +17,6 @@ class DoublyLinkedList:
         self.tail.prev = self.head
         self.tail.next = None
 
-
     def concat(self, L):
         self.tail.prev.next = L.head.next
         L.head.next.prev = self.tail.prev
@@ -25,7 +24,6 @@ class DoublyLinkedList:
         self.tail.prev = L.tail.prev
         self.nodeCount += L.nodeCount
         return True
-
 
     def traverse(self):
         result = []
@@ -35,8 +33,7 @@ class DoublyLinkedList:
             result.append(curr.data)
         return result
 
-    
-    def getAt(self, pos): #이중 연결리스트이므로 앞뒤의 갯수 판별 후 확인
+    def getAt(self, pos):  # 이중 연결리스트이므로 앞뒤의 갯수 판별 후 확인
         if pos < 0 or pos > self.nodeCount:
             return None
 
@@ -55,7 +52,6 @@ class DoublyLinkedList:
 
         return curr
 
-
     def insertAfter(self, prev, newNode):
         next = prev.next
         newNode.prev = prev
@@ -64,7 +60,7 @@ class DoublyLinkedList:
         next.prev = newNode
         self.nodeCount += 1
         return True
-    
+
     def insertBefore(self, next, newNode):
         before = next.prev
         newNode.next = next
@@ -83,24 +79,20 @@ class DoublyLinkedList:
 
     def popAfter(self, prev):
         cur = prev.next
-        cur.next.prev= prev
+        cur.next.prev = prev
         prev.next = cur.next
-        self.nodeCount -=1
+        self.nodeCount -= 1
         return cur.data
-
 
     def popBefore(self, next):
         cur = next.prev
         next.prev = cur.prev
         cur.prev.next = cur.next
-        self.nodeCount -=1
+        self.nodeCount -= 1
         return cur.data
 
-
     def popAt(self, pos):
-        if pos < 0 or pos > self.nodeCount :
+        if pos < 0 or pos > self.nodeCount:
             raise IndexError
-        prev = self.getAt(pos-1)
+        prev = self.getAt(pos - 1)
         return self.popAfter(prev)
-
-    

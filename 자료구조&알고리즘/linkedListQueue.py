@@ -17,24 +17,21 @@ class DoublyLinkedList:
         self.tail.prev = self.head
         self.tail.next = None
 
-
     def __repr__(self):
         if self.nodeCount == 0:
-            return 'LinkedList: empty'
+            return "LinkedList: empty"
 
-        s = ''
+        s = ""
         curr = self.head
         while curr.next.next:
             curr = curr.next
             s += repr(curr.data)
             if curr.next.next is not None:
-                s += ' -> '
+                s += " -> "
         return s
-
 
     def getLength(self):
         return self.nodeCount
-
 
     def traverse(self):
         result = []
@@ -44,7 +41,6 @@ class DoublyLinkedList:
             result.append(curr.data)
         return result
 
-
     def reverse(self):
         result = []
         curr = self.tail
@@ -52,7 +48,6 @@ class DoublyLinkedList:
             curr = curr.prev
             result.append(curr.data)
         return result
-
 
     def getAt(self, pos):
         if pos < 0 or pos > self.nodeCount:
@@ -73,7 +68,6 @@ class DoublyLinkedList:
 
         return curr
 
-
     def insertAfter(self, prev, newNode):
         next = prev.next
         newNode.prev = prev
@@ -83,14 +77,12 @@ class DoublyLinkedList:
         self.nodeCount += 1
         return True
 
-
     def insertAt(self, pos, newNode):
         if pos < 1 or pos > self.nodeCount + 1:
             return False
 
         prev = self.getAt(pos - 1)
         return self.insertAfter(prev, newNode)
-
 
     def popAfter(self, prev):
         curr = prev.next
@@ -100,14 +92,12 @@ class DoublyLinkedList:
         self.nodeCount -= 1
         return curr.data
 
-
     def popAt(self, pos):
         if pos < 1 or pos > self.nodeCount:
-            raise IndexError('Index out of range')
+            raise IndexError("Index out of range")
 
         prev = self.getAt(pos - 1)
         return self.popAfter(prev)
-
 
     def concat(self, L):
         self.tail.prev.next = L.head.next
@@ -125,19 +115,15 @@ class LinkedListQueue:
     def size(self):
         return self.data.getLength()
 
-
     def isEmpty(self):
         return True if self.data.getLength() == 0 else False
 
-
     def enqueue(self, item):
         node = Node(item)
-        self.data.insertAt(self.data.getLength()+1, node)
-
+        self.data.insertAt(self.data.getLength() + 1, node)
 
     def dequeue(self):
         return self.data.popAt(1)
-
 
     def peek(self):
         return self.data.getAt(1).data
